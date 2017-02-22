@@ -64,6 +64,7 @@ img_alt()
 def email():
 	base_url='https://www.si.umich.edu/directory?field_person_firstname_value=&field_person_lastname_value=&rid=4'
 	base_url_prof='https://www.si.umich.edu'
+	n=0
 	for i in range(6):
 		if i == 0:
 			req=urllib.request.Request(base_url, None, {'User-Agent': 'SI_CLASS'})
@@ -78,7 +79,8 @@ def email():
 			soup5=BeautifulSoup(url_prof,'html.parser')
 			for email in soup5.find_all(class_='field field-name-field-person-email field-type-email field-label-inline clearfix'):
 				mail=str.split(email.get_text())
-				print (mail[1])
+				n+=1
+				print (str(n) + " " + mail[1])
 
 print('\n*********** PROBLEM 4 ***********')
 print("UMSI faculty directory emails\n")
